@@ -39,7 +39,7 @@ We can define a variable by using the syntax variable_name=value. To get the val
 #!/bin/bash
 # A simple variable example
 greeting=Hello
-name=Tux
+name=Emdad
 echo $greeting $name
 ```
 
