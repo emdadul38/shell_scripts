@@ -43,7 +43,7 @@ cd ../..
 # update directory 
 updated_dir=$(pwd)
 
-MANIFEST_FILE="$updated_dir/RealLife-Office/infrastructure-k8s/veeper/dev/veeper-workload.yaml"
+MANIFEST_FILE="$updated_dir/text-workload.yaml"
 
 echo "Execute the image:: $IMAGE_URL:$TAG"
 
