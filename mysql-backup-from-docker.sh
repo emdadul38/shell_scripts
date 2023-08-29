@@ -15,4 +15,4 @@ docker exec ContainerID mkdir -p dumps
 docker exec ContainerID sh -c "mysqldump -u$DB_USER -p$DB_PASS $DB_NAME > /dumps/$DB_NAME.sql"
 
 # Move dump file to the host machine
-docker cp ContainerID:/dumps/brur_sms_db.sql ../mysql-backup/brur_sms_db.sql
+docker cp ContainerID:/dumps/$DB_NAME.sql ../mysql-backup/$DB_NAME.sql
