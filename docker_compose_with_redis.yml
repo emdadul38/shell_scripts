@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+   redis:
+    image: "redis:alpine"
+    container_name: redis-master
+
+    ports:
+      - "63792:6379"
+    volumes:
+      - ./redis-data:/var/lib/redis
+    environment:
+      - REDIS_REPLICATION_MODE=master
+      - ALLOW_EMPTY_PASSWORD=yes
+
+    networks:
+      - redis-network
+      
+   node-app:
+      restart: on-failure
+      image: ******.dkr.ecr.us-east-1.amazonaws.com/nodeapp-dev:dv1.0.2
+      container_name: nodeapp-dev
+      build: .
+      command:  node app.js
+      ports:
+         - "3000:3000"
+
+      depends_on:
+      - redis
+      networks:
+        - redis-network
+      environment:
+        - REDIS_HOST=redis://redis-master:6379
+networks:
+  redis-network:
+    driver: bridge
